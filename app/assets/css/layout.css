@@ -1,0 +1,76 @@
+.app-footer,
+.default-layout-page {
+    transition: all 0.3s ease-in-out;
+}
+
+.default-layout-page {
+    min-height: calc(100vh - 72px);
+    padding: 20px;
+    padding-top: calc(72px + 20px);
+}
+@media screen and (max-width: 992px) {
+    .default-layout-page {
+        padding-inline: 10px;
+    }
+}
+
+.side-bar-mask {
+    @apply mask hidden;
+}
+.side-bar-mask.active {
+    @apply mask md:!block;
+}
+
+.app-sidebar {
+    transition:
+        height 0.3s linear,
+        transform 0.3s ease-in-out;
+    width: 300px;
+    top: calc(72px + 20px);
+    height: calc(100vh - (72px + 20px + 10px));
+    @apply fixed main-border translate-x-full  z-[101] px-3 py-5 bg-white  rounded-xl md:rounded-none  md:h-screen md:top-0 select-none   md:!right-0 
+    sm:w-full sm:h-[70vh] sm:top-auto sm:bottom-0 sm:translate-x-0 sm:translate-y-full sm:rounded-t-xl sm:rounded-b-none sm:shadow sm:pb-16 sm:absolute;
+}
+.app-sidebar.active {
+    @apply right-8  translate-x-0 sm:translate-y-0;
+}
+
+.app-sidebar :where(.menu-list) {
+    @apply fl py-2;
+}
+.app-sidebar :where(.menu-text) {
+    @apply text-base font-medium text-gray-600;
+}
+
+.app-sidebar :where(.menu-item) {
+    @apply p-2 px-3 rounded-lg trans hover:bg-slate-200 hover:text-black fc gap-2 mb-1;
+}
+.app-sidebar :where(.menu-item).router-link-exact-active {
+    @apply bg-slate-200 text-black;
+}
+
+.app-header {
+    height: 72px;
+    @apply fixed bg-white top-0 left-0 right-0 z-100;
+}
+
+.app-logo {
+    width: calc(300px + 20px);
+}
+
+.extra_menu {
+    animation: fadein 0.3s;
+    @apply fc gap-2 md:hidden md:absolute left-0 md:bg-white p-2 rounded md:shadow md:top-[80px] md:left-3 sm:left-6 md:w-20;
+}
+.extra_menu.mobile-active {
+    @apply !flex md:flex-col md:w-32 sm:w-28;
+}
+.extra_menu .item {
+    @apply flex-center trans-all  shadow-transparent hover:bg-slate-100 hover:shadow-sm  w-10 h-10 rounded-full p-2 md:w-full md:h-fit md:py-1.5 md:flex-between md:flex-row-reverse md:rounded-md;
+}
+.extra_menu .item .icon {
+    @apply text-xl md:text-base;
+}
+.extra_menu .item .label {
+    @apply hidden md:block md:text-sm;
+}

@@ -1,0 +1,29 @@
+@tailwind base;
+
+@layer base {
+    :root {
+        --primary-50: 255 245 236;
+        --primary-100: 255 230 209;
+        --primary-200: 255 204 167;
+        --primary-300: 255 169 110;
+        --primary-400: 255 133 52;
+        --primary-500: 255 111 0;
+        --primary-600: 204 89 0;
+        --primary-700: 153 67 0;
+        --primary-800: 102 45 0;
+        --primary-900: 76 34 0;
+        --primary-950: 38 17 0;
+    }
+    body {
+        @apply overflow-hidden bg-slate-50 text-gray-600;
+    }
+    header {
+        @apply h-16 flex items-center justify-center;
+    }
+    .container {
+        @apply !w-5/6 sm:!w-nine max-w-8xl;
+    }
+    .container-fluid {
+        @apply px-5 md:px-3 sm:px-1 mx-auto w-full overflow-x-hidden max-w-8xl;
+    }
+}

@@ -1,0 +1,114 @@
+.slide-down-enter-from,
+.slide-down-leave-to {
+    max-height: 0;
+}
+
+.slide-down-enter-to,
+.slide-down-leave-from {
+    max-height: 1000px;
+}
+
+.slide-down-leave-active {
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
+}
+
+.slide-down-enter-active {
+    overflow: hidden;
+    transition: max-height 1s ease-in-out;
+}
+
+/* Fade */
+
+.layout-animation-enter-active,
+.layout-animation-leave-active {
+    transition:
+        opacity 0.3s ease,
+        filter 0.3s ease;
+}
+
+.layout-animation-enter-from,
+.layout-animation-leave-to {
+    opacity: 0;
+    filter: blur(5px);
+}
+
+/* Leave To left And Come from Right with Blur */
+.page-animation-enter-active,
+.page-animation-leave-active {
+    transition:
+        opacity 0.3s ease-in-out,
+        transform 0.3s ease-in-out,
+        filter 0.3s ease-in-out;
+}
+
+.page-animation-enter-from {
+    opacity: 0;
+    transform: translateX(-100%);
+    filter: blur(10px);
+}
+
+.page-animation-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
+    filter: blur(10px);
+}
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+.fade-blur-enter-active,
+.fade-blur-leave-active {
+    transition: all 0.5s ease;
+}
+
+.fade-blur-enter-from,
+.fade-blur-leave-to {
+    opacity: 0;
+    filter: blur(30px);
+}
+
+.fade-list-move,
+.fade-list-enter-active,
+.fade-list-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+/* 2. declare enter from and leave to state */
+.fade-list-enter-from,
+.fade-list-leave-to {
+    opacity: 0;
+}
+
+/* 3. ensure leaving items are taken out of layout flow so that moving
+      animations can be calculated correctly. */
+.fade-list-leave-active {
+    position: absolute;
+}
+
+

@@ -1,0 +1,126 @@
+@layer components {
+    .trans,
+    .t-trans,
+    .before-t-trans,
+    .trans-all,
+    .trans-left.trans-right {
+        @apply duration-300 ease-in-out;
+    }
+    .trans {
+        @apply transition-colors;
+    }
+
+    .t-trans {
+        @apply transition-transform;
+    }
+    .trans-all {
+        @apply transition-all;
+    }
+
+    .before-t-trans::before {
+        @apply transition-transform;
+    }
+    .trans-left {
+        @apply transition-[left];
+    }
+    .trans-right {
+        @apply transition-[right];
+    }
+
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
+
+    .flex-between {
+        @apply flex justify-between items-center;
+    }
+    .flex-end {
+        @apply flex justify-end;
+    }
+
+    .fc {
+        @apply flex items-center;
+    }
+    .fs {
+        @apply flex items-start;
+    }
+    .fl {
+        @apply flex flex-col;
+    }
+    .fl-2 {
+        @apply fl gap-2;
+    }
+    .fl-5 {
+        @apply fl gap-5;
+    }
+    .abs-center {
+        @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+    }
+    .mask {
+        animation: fadein 0.3s ease-in-out;
+        @apply fixed left-0 top-0 w-full h-full z-[100] bg-black/40;
+    }
+    .border-color {
+        @apply border-gray-300/40;
+    }
+    hr {
+        @apply border-gray-300/40;
+    }
+    .main-border {
+        @apply border  border-color;
+    }
+    .main-border-b {
+        @apply border-b border-color;
+    }
+    .main-border-t {
+        @apply border-t border-color;
+    }
+    .main-border-l {
+        @apply border-l border-color;
+    }
+    .dashboard-card {
+        @apply bg-white shadow-sm p-5 rounded-lg main-border;
+    }
+    .card-title {
+        @apply text-xl flex font-medium text-gray-700 relative  before:absolute before:right-0 before:top-1/2  before:w-1 before:rounded-lg before:h-3/4 before:-translate-y-1/2  before:bg-slate-600 after:absolute after:right-0 after:-bottom-2 after:w-full  after:h-[1px] after:translate-y-full  after:bg-gray-300/40 pr-3 mb-4;
+    }
+    .page-container {
+        @apply flex flex-col gap-2.5 custom-scroll max-w-8xl mx-auto;
+    }
+    .page-title {
+        @apply text-3xl xxl:text-2xl sm:text-lg sm:pb-3 font-bold w-fit text-gray-600 pb-5  relative before:absolute before:right-0 before:bottom-0 before:w-1/2 before:rounded-lg before:h-1 before:bg-slate-600;
+    }
+    .group-section-title {
+        @apply font-medium pr-1.5 relative before:absolute before:right-0 before:top-1/2 before:w-1 before:h-3/4 before:translate-x-full before:-translate-y-1/2 before:bg-slate-500 before:rounded-xl text-gray-700 cursor-pointer;
+    }
+    .page-header {
+        @apply px-5 py-3 sm:px-2 sm:py-2 rounded-xl bg-white main-border;
+    }
+    .page-content,
+    .box-content {
+        @apply p-3 bg-white rounded-xl main-border;
+    }
+    .form-group {
+        @apply fl-5 py-4;
+    }
+    .input-group {
+        @apply fl gap-2.5;
+    }
+    .form-label {
+        @apply text-gray-600  text-sm;
+    }
+    .app-menu {
+        @apply w-6 h-6 justify-center fl gap-1;
+    }
+    .app-menu span {
+        height: 3px;
+        @apply bg-slate-600 w-full  rounded-full;
+    }
+    .app-menu span:nth-child(3) {
+        transition: width 0.3s ease-in-out;
+        @apply w-3/4;
+    }
+    .app-menu.active span:nth-child(3) {
+        @apply w-full;
+    }
+}

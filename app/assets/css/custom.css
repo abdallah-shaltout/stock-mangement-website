@@ -1,0 +1,163 @@
+.p-datatable-scrollable .p-datatable-table-container {
+    @apply custom-scroll;
+}
+
+/* App Paginator */
+
+.paginate-btn {
+    @apply flex-center w-9 h-9 rounded-full trans-all hover:!bg-slate-400 hover:!text-white  text-slate-600;
+}
+.paginate-btn.active {
+    @apply bg-slate-400 text-white shadow-lg;
+}
+
+.paginate-btn:disabled {
+    @apply opacity-40;
+}
+
+.paginate-btn.arrow {
+    @apply bg-transparent hover:text-slate-600;
+}
+.custom-spinner svg circle {
+    @apply !stroke-white;
+}
+
+.paginator-select > div {
+    @apply custom-scroll;
+}
+.paginator-select .p-select-option {
+    @apply !py-1.5 px-3;
+}
+.p-datatable-column-title {
+    @apply whitespace-nowrap;
+}
+.center-header .p-datatable-header-cell .p-datatable-column-header-content {
+    @apply flex-center;
+}
+:where(.rating-color-1, .rating-color-2) {
+    @apply text-red-500;
+}
+:where(.rating-color-3) {
+    @apply text-yellow-500;
+}
+:where(.rating-color-4, .rating-color-5) {
+    @apply text-green-500;
+}
+
+.category-select span.p-inputicon {
+    left: var(--p-form-field-padding-x) !important;
+    right: auto !important;
+    margin-top: 0 !important;
+    height: 16px !important;
+    @apply flex-center -translate-y-1/2;
+}
+.category-select input.p-inputtext {
+    padding: var(--p-inputtext-padding-y) var(--p-inputtext-padding-x);
+    padding-left: calc((var(--p-form-field-padding-x) * 2) + var(--p-icon-size));
+    @apply !pr-4;
+}
+.p-select-clear-icon {
+    left: var(--p-select-dropdown-width) !important;
+    right: unset !important;
+}
+
+.choose-image-small-plus-btn {
+    @apply !w-10 !h-10 xxl:!w-6 xxl:!h-6 xl:!w-8 xl:!h-8 lg:!w-8 lg:!h-8;
+}
+.choose-image-small-plus-icon {
+    @apply !text-sm lg:!text-sm;
+}
+.choose-image-small-delete-btn {
+    @apply left-1/2 !right-auto !top-1/2 !-translate-y-1/2 !-translate-x-1/2;
+}
+.choose-image-small-overlay {
+    @apply lg:!w-8 lg:!h-8 lg:group-hover:!scale-[14];
+}
+
+.wide-choose-image {
+    @apply aspect-[auto] h-[305px];
+}
+.wide-choose-image-btn {
+    @apply !w-14 !h-14;
+}
+.wide-choose-image-overlay {
+    @apply !w-14 !h-14;
+}
+
+/* extra menu */
+
+.extra-menu-item {
+    @apply rounded-full md:rounded-none;
+}
+
+.extra-menu-item .btn {
+    @apply md:w-full md:!justify-between;
+}
+
+.extra-menu-item.router-link-exact-active .btn {
+    @apply md:bg-slate-300 md:text-slate-800;
+}
+.p-select-list-container {
+    @apply !custom-scroll;
+}
+/* check box */
+
+:where(.contrast-checkbox).p-checkbox-checked .p-checkbox-box {
+    @apply !bg-slate-950 !border-slate-950;
+}
+:where(.contrast-checkbox).p-checkbox:not(.p-disabled):has(.p-checkbox-input:hover)
+    .p-checkbox-box {
+    @apply !border-slate-950;
+}
+.form-error-msg {
+    @apply text-red-400 text-sm mt-1 mr-6 font-medium relative before:content-['*'] before:text-red-500 before:text-lg before:font-medium before:absolute before:top-0 before:-right-3;
+}
+
+.sidebar-sm-top-shape {
+    @apply hidden sm:block fixed left-1/2 -translate-x-1/2 top-3 w-16 h-2 bg-slate-900/50 rounded-xl 
+    /* before:absolute before:left-1/2 before:-top-1 before:-translate-y-full before:-translate-x-1/2 before:bg-slate-900/50 before:w-3 before:h-3 before:rounded-full; */;
+}
+
+.tab-menu-btn {
+    @apply relative rounded-full w-10 h-10  p-1 flex-center   text-slate-600;
+}
+
+.router-link-exact-active:has(.tab-menu-btn) :where(.tab-menu-btn) {
+    @apply !text-primary;
+}
+.router-link-exact-active:has(.tab-menu-btn) :where(.tab-menu-btn.active-red) {
+    @apply !text-rose-500;
+}
+
+/* pending section */
+
+.pending {
+    @apply block  bg-slate-100 rounded relative overflow-hidden max-w-full
+    before:left-0 before:top-0 before:w-full before:h-full before:content-[''] before:absolute before:-translate-x-full;
+}
+.pending.light {
+    @apply !bg-slate-100;
+}
+.pending::before {
+    animation: pending-loading 700ms cubic-bezier(0.57, -0.01, 0.21, 0.89) infinite;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+@keyframes pending-loading {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* .p-datatable-mask.p-overlay-mask {
+    @apply bg-transparent h-auto;
+} */
