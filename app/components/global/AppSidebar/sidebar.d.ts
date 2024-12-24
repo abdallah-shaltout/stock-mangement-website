@@ -11,7 +11,7 @@ interface link {
 }
 
 interface sidebarItemType {
-    title: string
+    title?: string
     items?: link[]
 }
 

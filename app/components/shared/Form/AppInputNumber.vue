@@ -11,16 +11,18 @@
                 <InputNumber
                     v-model="model"
                     v-bind="{
+                        size,
                         inputId: id,
                         placeholder,
                         disabled,
                         min,
                         max,
                         prefix,
-                        suffix
+                        suffix,
+                        // useGrouping,
+                        // inputClass: `flex-1 ${inputClass}`
                     }"
                     class="flex-1"
-                    input-class="dir-ltr"
                 />
                 <slot />
             </div>
@@ -32,5 +34,8 @@
     import type { inputNumberProps } from '~/types'
 
     const model = defineModel<number>()
+
+
+    
     defineProps<Partial<inputNumberProps>>()
 </script>

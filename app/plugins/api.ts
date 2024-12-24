@@ -1,4 +1,4 @@
-import { getToken } from "~/libs"
+import { getToken } from '~/libs'
 
 declare module '#app' {
     interface NuxtApp {
@@ -14,7 +14,11 @@ export default defineNuxtPlugin(() => {
         credentials: 'include',
 
         onRequest({ options }) {
-            options.headers.set('accept-Language', 'ar')
+            options.query = Object.fromEntries(
+                Object.entries(options.query || {}).filter(
+                    ([_, value]) => value !== '' && value !== undefined
+                )
+            )
             let token = getToken()
             if (!token) return
             options.headers.set('Authorization', `Bearer ${token}`)

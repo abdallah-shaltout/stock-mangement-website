@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <ul class="flex-center space-x-2" v-auto-animate="$autoAnimate">
+        <ul class="flex-center space-x-2 sm:space-x-1" v-auto-animate="$autoAnimate">
             <li>
                 <button
                     v-ripple
@@ -91,8 +91,8 @@
 
     const pagesToShow = computed(() => {
         let pages = []
-        const startPage = Math.max(1, activePage.value - 2)
-        const endPage = Math.min(totalPages, activePage.value + 2)
+        const startPage = Math.max(1, activePage.value - 1)
+        const endPage = Math.min(totalPages, activePage.value + 1)
         for (let i = endPage; i >= startPage; i--) {
             pages.push(i)
         }

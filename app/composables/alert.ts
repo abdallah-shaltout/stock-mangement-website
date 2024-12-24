@@ -27,7 +27,7 @@ export const useAlert = ({
     message,
     description,
     duration = 2000,
-    position = 'top-right',
+    position = 'top-center',
     closeButton = false,
     action
 }: AlertOptions) => {

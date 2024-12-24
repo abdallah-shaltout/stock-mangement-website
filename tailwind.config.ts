@@ -20,7 +20,7 @@ function generateSizes(options: {
 }
 
 const minMaxSizes = generateSizes({
-    from: 100,
+    from: 50,
     to: 800,
     step: 50,
     valueEnd: 'px'

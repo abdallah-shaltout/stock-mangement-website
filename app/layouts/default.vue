@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
     import { useStorage } from '@vueuse/core'
-    const showSidebar = useStorage('showSidebar', true)
+    const { isMobile } = useScreen()
+    const showSidebar = useStorage('showSidebar', isMobile.value ? false : true, sessionStorage)
     provide('showSidebar', showSidebar)
 </script>

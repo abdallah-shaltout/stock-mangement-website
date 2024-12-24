@@ -8,7 +8,7 @@
                     @click="model = !model"
                     class="sm:hidden"
                 />
-                <!-- <LazyAppSearch class="flex-2 sm:w-full" /> -->
+                <LazyAppSearch class="flex-2 sm:w-full" />
                 <LazyHeaderExtraMenu class="sm:hidden" />
             </div>
         </div>

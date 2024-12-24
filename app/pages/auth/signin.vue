@@ -2,8 +2,8 @@
     <section class="min-h-svh flex flex-row-reverse">
         <div class="flex-1 md:hidden">
             <LazyPagesAuthRightSide
-                title="لوحة التحكم"
-                tagline="طريقك لإنجاز كل شيء"
+                title="إدارة المخازن"
+                tagline="حلول متكاملة لإدارة المخازن بكفاءة"
                 imageSrc="https://res.cloudinary.com/dmjopl46j/image/upload/v1727476918/static%20assets/image_fx___27_-removebg-preview-transformed-transformed_ip3ma5.png"
             />
         </div>
@@ -20,7 +20,7 @@
                     :label="null"
                     v-model="user.username"
                     fieldClass="dir-ltr"
-                    placeholder="اسم المستخدم او البريد الالكتروني"
+                    placeholder="اسم المستخدم أو رقم الهاتف"
                 />
                 <LazySharedFormAppInputPassword
                     size="large"
@@ -30,12 +30,12 @@
                     placeholder="كلمة المرور"
                 />
 
-                <NuxtLink
+                <!-- <NuxtLink
                     :to="{ name: 'auth-forget-password' }"
                     class="text-dark hover:underline hover:underline-offset-6"
                 >
                     نسيت كلمة السر
-                </NuxtLink>
+                </NuxtLink> -->
                 <Button label="تسجيل الدخول" severity="primary" type="submit" />
                 <Button
                     label="دخول سريع"

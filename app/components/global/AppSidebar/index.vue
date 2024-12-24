@@ -6,7 +6,7 @@
         </div>
         <ul class="overflow-y-auto h-full custom-scroll fl sm:pt-3">
             <li v-for="(item, i) in sidebarItems" :key="i">
-                <span class="menu-text">{{ item.title }}</span>
+                <span class="menu-text" v-if="item.title">{{ item.title }}</span>
                 <ul class="menu-list">
                     <li v-for="(link, idx) in item.items" :key="idx">
                         <LazySidebarItem :item="link" @clicked:Route="ClickedRoute" />
@@ -63,13 +63,6 @@
         const AuthStore = useAuthStore()
         await AuthStore.SignOut()
         ClickedRoute()
-        console.log('out')
     }
 </script>
-<!-- {
-    label: 'الاعدادات',
-    icon: 'gear',
-    route: {
-        name: 'dashboard-settings'
-    }
-} -->
+

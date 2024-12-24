@@ -1,9 +1,9 @@
 export default [
     {
-        title: 'الرئيسية',
+        // title: 'الرئيسية',
         items: [
             {
-                label: 'لوحة التحكم',
+                label: 'الرئيسية',
                 icon: 'chart',
                 route: {
                     name: 'index'

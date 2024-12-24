@@ -8,7 +8,8 @@
                     :value="items"
                     class="w-full center-header"
                     scrollable
-                    dataKey="id"
+                    dataKey="_id"
+                    filterDisplay="row"
                     removableSort
                     @sort="
                         (event: any) => {
@@ -23,90 +24,34 @@
                         </p>
                     </template>
                     <template #header>
-                        <div class="flex-between flex-wrap gap-2">
-                            <div class="fc gap-2 flex-wrap">
-                                <LazySharedFormAppInputIcon
-                                    class="flex-1"
-                                    size="small"
-                                    inputClass="placeholder:text-right"
-                                    icon="pi pi-search"
-                                    :label="null"
-                                    v-model="query.book"
-                                    fieldClass="dir-ltr"
-                                    placeholder="رقم الدفتر"
-                                />
-                                <LazySharedFormAppInputIcon
-                                    class="flex-1"
-                                    size="small"
-                                    inputClass="placeholder:text-right"
-                                    icon="pi pi-search"
-                                    :label="null"
-                                    v-model="query.number"
-                                    fieldClass="dir-ltr"
-                                    placeholder="رقم الصفحة"
-                                />
-                                <LazySharedFormAppInputIcon
-                                    class="flex-1"
-                                    size="small"
-                                    inputClass="placeholder:text-right"
-                                    icon="pi pi-search"
-                                    :label="null"
-                                    v-model="query.code"
-                                    fieldClass="dir-ltr"
-                                    placeholder="رقم الصنف"
-                                />
-                                <LazySharedFormAppInputIcon
-                                    class="flex-1"
-                                    size="small"
-                                    inputClass="placeholder:text-right"
-                                    icon="pi pi-search"
-                                    :label="null"
-                                    v-model="query.name"
-                                    placeholder="اسم الصنف"
-                                />
-
-                                <LazyAppSelect
-                                    class="flex-1"
-                                    v-model="query.unit"
-                                    placeholder="الوحدة"
-                                    :options="
-                                        ['عدد', 'طقم', 'زوج', 'متر'].map((ele) => {
-                                            return { label: `${ele}`, value: ele }
+                        <div class="flex-between sm:flex-col gap-2">
+                            <Button
+                                label="تصدير البيانات"
+                                icon="pi pi-download"
+                                size="small"
+                                class="sm:w-full sm:hidden"
+                                severity="contrast"
+                                @click="
+                                    () => {
+                                        useAlert({
+                                            message: 'تم تصدير البيانات بنجاح',
+                                            type: 'success'
                                         })
-                                    "
-                                />
-                                <LazySharedFormAppInputIcon
-                                    size="small"
-                                    inputClass="placeholder:text-right"
-                                    icon="pi pi-search"
-                                    :label="null"
-                                    v-model="query.balance"
-                                    fieldClass="dir-ltr"
-                                    placeholder="الرصيد"
-                                />
-                                <LazyAppSelect
-                                    v-model="query.store"
-                                    placeholder="المخزن"
-                                    :options="[
-                                        {
-                                            label: 'مخزن اللواري',
-                                            value: '67695fae733ecdc921152d2e'
-                                        }
-                                    ]"
-                                />
-                            </div>
-
+                                    }
+                                "
+                            />
                             <Button
                                 label="إعادة التصفية"
                                 icon="pi pi-times"
                                 size="small"
+                                class="sm:w-full"
                                 severity="secondary"
                                 @click="restFilter"
                             />
                         </div>
                     </template>
 
-                    <Column field="book" header="رقم الدفتر">
+                    <Column field="book" header="رقم الدفتر" :showFilterMenu="false" sortable>
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -116,8 +61,20 @@
                                 {{ data.book }}
                             </span>
                         </template>
+
+                        <template #filter>
+                            <LazySharedFormAppInput
+                                v-model="query.book"
+                                v-bind="{
+                                    label: null,
+                                    useGrouping: false,
+                                    inputClass: 'w-100 sm:w-50 mx-auto dir-ltr text-center',
+                                    size: 'small'
+                                }"
+                            />
+                        </template>
                     </Column>
-                    <Column field="number" header="رقم الصفحة">
+                    <Column field="number" header="رقم الصفحة" :showFilterMenu="false" sortable>
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -127,8 +84,19 @@
                                 {{ data.number }}
                             </span>
                         </template>
+                        <template #filter>
+                            <LazySharedFormAppInput
+                                v-model="query.number"
+                                v-bind="{
+                                    label: null,
+                                    useGrouping: false,
+                                    inputClass: 'w-100 sm:w-50 mx-auto dir-ltr text-center',
+                                    size: 'small'
+                                }"
+                            />
+                        </template>
                     </Column>
-                    <Column field="item.code" header="رقم الصنف">
+                    <Column field="item.code" header="رقم الصنف" :showFilterMenu="false" sortable>
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -138,8 +106,18 @@
                                 {{ data.item.code }}
                             </span>
                         </template>
+                        <template #filter>
+                            <LazySharedFormAppInput
+                                v-model="query.code"
+                                v-bind="{
+                                    label: null,
+                                    inputClass: 'w-150 sm:w-100 mx-auto dir-ltr ',
+                                    size: 'small'
+                                }"
+                            />
+                        </template>
                     </Column>
-                    <Column field="item.name" header="أسم الصنف">
+                    <Column field="item.name" header="أسم الصنف" :showFilterMenu="false">
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -154,8 +132,19 @@
                                 }}
                             </span>
                         </template>
+                        <template #filter>
+                            <LazySharedFormAppInput
+                                v-model="query.name"
+                                v-bind="{
+                                    label: null,
+                                    useGrouping: false,
+                                    inputClass: 'w-full dir-rtl ',
+                                    size: 'small'
+                                }"
+                            />
+                        </template>
                     </Column>
-                    <Column field="item.unit" header="الوحدة">
+                    <Column field="item.unit" header="الوحدة" :showFilterMenu="false">
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -165,8 +154,24 @@
                                 {{ data.item.unit }}
                             </span>
                         </template>
+                        <template #filter>
+                            <Select
+                                v-model="query.unit"
+                                class="mx-auto w-full"
+                                v-bind="{
+                                    optionLabel: 'label',
+                                    optionValue: 'value',
+                                    placeholder: 'الوحدة',
+                                    size: 'small',
+
+                                    options: ['عدد', 'طقم', 'زوج', 'متر'].map((ele) => {
+                                        return { label: `${ele}`, value: ele }
+                                    })
+                                }"
+                            />
+                        </template>
                     </Column>
-                    <Column field="balance" header="الرصيد">
+                    <Column field="balance" header="الرصيد" :showFilterMenu="false">
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -176,8 +181,19 @@
                                 {{ data.balance }}
                             </span>
                         </template>
+                        <template #filter>
+                            <LazySharedFormAppInput
+                                v-model="query.balance"
+                                v-bind="{
+                                    label: null,
+                                    useGrouping: false,
+                                    inputClass: 'w-100 sm:w-50 mx-auto dir-ltr text-center',
+                                    size: 'small'
+                                }"
+                            />
+                        </template>
                     </Column>
-                    <Column field="item.price" header="السعر">
+                    <!-- <Column field="item.price" header="السعر" :showFilterMenu="false">
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -187,8 +203,8 @@
                                 {{ formatCurrency(data.item.price) }} جنية
                             </span>
                         </template>
-                    </Column>
-                    <Column field="store.name" header="المخزن">
+                    </Column> -->
+                    <Column field="store.name" header="المخزن" :showFilterMenu="false">
                         <template #body="{ data }" v-auto-animate="$autoAnimate">
                             <span
                                 class="pending w-3/4 h-4 rounded-full mx-auto"
@@ -198,13 +214,32 @@
                                 {{ data.store.name }}
                             </span>
                         </template>
+                        <template #filter>
+                            <Select
+                                v-model="query.store"
+                                class="mx-auto w-full"
+                                v-bind="{
+                                    optionLabel: 'label',
+                                    optionValue: 'value',
+                                    placeholder: 'المخزن',
+                                    size: 'small',
+
+                                    options: [
+                                        {
+                                            label: 'اللواري',
+                                            value: '67695fae733ecdc921152d2e'
+                                        }
+                                    ]
+                                }"
+                            />
+                        </template>
                     </Column>
 
                     <Column header="الاجراءات">
                         <template #body="{ data }">
                             <LazySharedActionsButtons
                                 :pending
-                                class="max-w-150 mx-auto"
+                                class="max-w-150 sm:w-100 mx-auto"
                                 :actions="['edit', 'delete']"
                                 @edit="
                                     () => {
@@ -230,21 +265,17 @@
                 <div
                     class="flex-center sm:flex-col-reverse sm:gap-2 mt-5 overflow-x-auto custom-scroll"
                 >
-                    <LazyAppSelect
+                    <Select
                         v-model="query.limit"
                         size="small"
+                        class="ml-5 sm:mx-auto sm:w-nine"
+                        optionLabel="label"
+                        optionValue="value"
                         :options="
-                            [
-                                { label: '5 أصناف', value: '5' },
-                                { label: '10 أصناف', value: '10' },
-                                { label: '15 صنف', value: '15' },
-                                { label: '25 صنف', value: '25' },
-                                { label: '50 صنف', value: '50' }
-                            ].map((ele) => {
-                                return { label: `${ele.label}`, value: ele.value }
+                            [5, 10, 15, 25, 40, 50].map((ele) => {
+                                return { label: `${ele} ${ele > 11 ? 'صنف' : 'أصناف'} في الصفحة`, value: ele?.toString() }
                             })
                         "
-                        class="ml-5 sm:w-nine sm:mx-auto"
                     />
                     <Transition name="fade">
                         <LazyAppPaginate
@@ -265,20 +296,20 @@
     import { useRouteQuery } from '@vueuse/router'
     import type { paginateResultType, ItemType } from '~/types'
     import { getSortValue } from '~/libs/query'
-    import { formatCurrency, sliceString } from '~/libs'
+    import { sliceString } from '~/libs'
     const query = reactive({
         limit: useRouteQuery<string>('limit', '10'),
         page: useRouteQuery<string>('page', '1'),
         sort: useRouteQuery<string>('sortBy', ''),
-        code: useRouteQuery<string | undefined>('code'),
-        name: useRouteQuery<string | undefined>('name'),
-        unit: useRouteQuery<string | undefined>('unit'),
-        balance: useRouteQuery<string | undefined>('balance'),
-        store: useRouteQuery<string | undefined>('store'),
-        book: useRouteQuery<string | undefined>('book'),
-        number: useRouteQuery<string | undefined>('number'),
+        code: useRouteQuery<string | undefined>('code', ''),
+        name: useRouteQuery<string | undefined>('name', ''),
+        unit: useRouteQuery<string | undefined>('unit', ''),
+        balance: useRouteQuery<string | undefined>('balance', ''),
+        store: useRouteQuery<string | undefined>('store', ''),
+        book: useRouteQuery<string | undefined>('book', ''),
+        number: useRouteQuery<string | undefined>('pageNumber', ''),
         populate: JSON.stringify([
-            { path: 'item', select: 'code name price unit' },
+            { path: 'item', select: 'code name unit' },
             { path: 'store', select: 'name' }
         ])
     })
@@ -287,14 +318,11 @@
         query.page = '1'
     }
 
-    watch(
-        () => query,
-        (newVal, oldVal) => {
-            if (newVal.page === oldVal.page) {
-                restPage()
-            }
-        }
-    )
+    // watch(query, (newVal, oldVal) => {
+    //     if (newVal.page === oldVal.page) {
+    //         restPage()
+    //     }
+    // })
 
     const ItemsResponse = ref<ItemType[]>([])
 
@@ -313,11 +341,17 @@
     )
 
     function restFilter() {
-        query.code = undefined
-        query.name = undefined
-        query.unit = undefined
+        query.code = ''
+        query.name = ''
+        query.unit = ''
+        query.store = ''
+        query.book = ''
+        query.number = ''
+        query.balance = ''
         query.limit = '10'
+        query.sort = ''
         restPage()
+        useAlert({ message: 'تم اعادة التصفية بنجاح', type: 'success' })
     }
 
     const pending = computed(() => status.value === 'pending')

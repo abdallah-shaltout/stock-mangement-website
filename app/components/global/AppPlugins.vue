@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Toaster dir="rtl" position="top-right" theme="light" />
+        <Toaster dir="rtl" position="top-center" theme="light" />
         <ConfirmDialog class="app-confirm" :draggable="false"></ConfirmDialog>
         <Transition name="fade-blur">
             <LazyAppLoading />

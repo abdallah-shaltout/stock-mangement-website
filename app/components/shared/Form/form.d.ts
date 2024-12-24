@@ -3,7 +3,9 @@ export interface InputProps {
     placeholder: string
     error: string | undefined
     inputId: string
+    size: 'small' | 'large'
     disabled: boolean
+    inputClass: string
 }
 
 export interface inputUrlProps extends InputProps {
@@ -12,7 +14,6 @@ export interface inputUrlProps extends InputProps {
 
 export interface inputPasswordProps extends InputProps {
     icon: string
-    size: 'small' | 'large'
     inputClass: string
 }
 export interface inputNumberProps extends InputProps {
@@ -20,6 +21,7 @@ export interface inputNumberProps extends InputProps {
     suffix: string
     min: number
     max: number
+    useGrouping: boolean
 }
 export interface inputIconProps extends inputPasswordProps {
     type: 'text' | 'password'
@@ -32,11 +34,3 @@ export interface inputCheckSlugProps extends inputUrlProps {
     initValue: string
     minLength: number
 }
-
-export interface Props1 {
-    label: string | null
-    placeholder: string
-    error: string | undefined
-    inputId: string
-}
-export type Props = Partial<Props1>

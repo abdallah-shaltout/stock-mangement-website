@@ -7,7 +7,9 @@
                 v-bind="{
                     placeholder,
                     disabled,
-                    id: inputIdComputed
+                    id: inputIdComputed,
+                    size,
+                    class: inputClass
                 }"
             />
         </slot>

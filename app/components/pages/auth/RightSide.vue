@@ -13,7 +13,7 @@
         <NuxtImg
             loading="lazy"
             :src="imageSrc"
-            class="w-5/6 mt-4 mix-blend-multiply"
+            class="w-5/6 max-w-lg mt-4 mix-blend-multiply"
             alt="صورة التطبيق"
         />
     </div>
